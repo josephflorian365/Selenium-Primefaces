@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>     
+        <p:growl id="mensaje" showDetail="true" />
+        <p:growl id="growl-sticky" for="sticky-key" showDetail="true" sticky="true" />
+
+        <h:form id="form">
+            <!--        Formulario del Cliente    >-->         
+            <p:panelGrid columns="2" style="margin: 0 auto; ">
+                <p:outputLabel value="Identificado"/> 
+                <p:inputText id="codecli" maxlength="8" placeholder="Escribe aqui" value="#{ClienteC.cliente.nombre}" 
+                             required="true" requiredMessage="Requiere Nombre">
+                </p:inputText>
+                <p:outputLabel value="Nombre"/> 
+                <p:inputText id="firstcli" maxlength="8" placeholder="Escribe aqui" value="#{ClienteC.cliente.nombre}" 
+                             required="true" requiredMessage="Requiere Nombre">
+                    <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú_ ]/"/>
+                </p:inputText>
+                <p:outputLabel value="Apellidos" /> 
+                <p:inputText id="lastcli" maxlength="60" placeholder="Escribe aqui" value="#{ClienteC.cliente.apellidos}" 
+                             required="true" requiredMessage="Requiere Apellidos">
+                    <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú_ ]/"/>
+                </p:inputText>
+
+                <p:outputLabel value="DNI"/> 
+                <p:inputText id="dnicli"  maxlength="8" placeholder="Escribe aqui"  value="#{ClienteC.cliente.dni}" 
+                             required="true" requiredMessage="Requiere DNI" >
+                    <p:keyFilter regEx="/[0-9]/" />
+
+                </p:inputText>
+
+                <p:outputLabel value="Celular" /> 
+                <p:inputText id="mobilecli" maxlength="9" placeholder="Escribe aqui" value="#{ClienteC.cliente.celular}" 
+                             required="true" requiredMessage="Requiere Celular">
+                    <p:keyFilter regEx="/[0-9]/" />
+                </p:inputText>
+
+                <p:outputLabel value="Direccion" /> 
+                <p:inputText id="addresscli" maxlength="60" placeholder="Escribe aqui"  value="#{ClienteC.cliente.direccion}"  
+                             required="true" requiredMessage="Requiere Dirección">
+                    <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú__0-9_:_ _@]/"/>
+                </p:inputText>
+
+                <p:outputLabel value="Ubigeo" />
+                <p:inputText id="locationcli" maxlength="60" placeholder="Escribe aqui"  value="#{ClienteC.cliente.ubigeo.idubi}"  
+                             required="true" requiredMessage="Requiere Ubicaión">
+                    <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú__0-9_:_ _@]/"/>
+                </p:inputText>
+
+
+                <p:commandButton value="Registrar" actionListener="#{ClienteC.registrar()}" update="tablacli mensaje"/>
+            </p:panelGrid>
+
+            <!--  Listado del Clientes -->
+            <p:dataTable var="tblcli" id="tablacli" value="#{ClienteC.listadoCli}" rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                         rowsPerPageTemplate="5,10,{ShowAll|'All'}" >
+                <p:column headerText="DNI">
+                    <h:outputText value="#{tblcli.dni}" />
+                </p:column>
+                <p:column headerText="NOMBRE">
+                    <h:outputText value="#{tblcli.nombre}" />
+                </p:column>
+
+                <p:column headerText="CELULAR">
+                    <h:outputText value="#{tblcli.celular}" />
+                </p:column>
+
+                <p:column headerText="APELLIDOS">
+                    <h:outputText value="#{tblcli.apellidos}" />
+                </p:column>
+
+                <p:column headerText="Direccion">
+                    <h:outputText value="#{tblcli.direccion}" />
+                </p:column>
+
+                <p:column headerText="Ubigeo">
+                    <h:outputText value="#{tblcli.ubigeo.disubi}" />
+                </p:column>
+
+                <f:facet name="footer">
+                    EN TOTAL HAY #{fn:length(ClienteC.listadoCli)} REGISTROS.
+                </f:facet>
+            </p:dataTable>
+
+        </h:form>
+
+    </h:body>
+</html>
+
