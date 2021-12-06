@@ -51,10 +51,22 @@
                 </p:inputText>
 
                 <p:outputLabel value="Ubigeo" />
-                <p:inputText id="locationcli" maxlength="60" placeholder="Escribe aqui"  value="#{ClienteC.cliente.ubigeo.idubi}"  
+<!--                <p:inputText id="locationcli" maxlength="60" placeholder="Escribe aqui"  value="#{ClienteC.cliente.ubigeo.idubi}"  
                              required="true" requiredMessage="Requiere Ubicaión">
                     <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú__0-9_:_ _@]/"/>
-                </p:inputText>
+                </p:inputText>-->
+                
+                
+<!--                Aqui el selecOneMenu-->
+                <p:selectOneMenu title="Igrese el Ubigeo" id="lug" value="#{ClienteC.cliente.ubigeo.idubi}" style="width:195px" 
+                                 filter="true" filterMatchMode="contains" required="true" requiredMessage="Falta Ubigeo" >
+                    <f:selectItem noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}"/>
+                    <f:selectItems value="#{UbigeoC.listadoUbigeo}" var="ubigeo"
+                                   itemValue="#{ubigeo.idubi}" 
+                                   itemLabel="#{ubigeo.disubi}, 
+                                   #{ubigeo.proubi}, 
+                                   #{ubigeo.depubi}"/>
+                </p:selectOneMenu>
 
 
                 <p:commandButton value="Registrar" actionListener="#{ClienteC.registrar()}" update="tablacli mensaje"/>

@@ -58,6 +58,8 @@ public class ClienteCIT {
         mobile = driver.findElement(By.xpath("//*[@id='form:mobilecli']"));
         address = driver.findElement(By.xpath("//*[@id='form:addresscli']"));
         location = driver.findElement(By.xpath("//*[@id='form:locationcli']"));
+        
+        //intentos sin exito SelectOneMenu
         //driver.findElement(By.id("form:locationcli_label")).click();
         //driver.findElement(By.xpath("//div[@id='form:locationcli_label']/ul/li[text()='item value']")).click();
 
