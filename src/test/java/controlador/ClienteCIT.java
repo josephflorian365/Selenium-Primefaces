@@ -48,7 +48,7 @@ public class ClienteCIT {
         WebElement dni;
         WebElement mobile;
         WebElement address;
-        WebElement location;
+        //WebElement location;
 
         //search id or name
         code = driver.findElement(By.xpath("//*[@id='form:codecli']"));
@@ -57,11 +57,11 @@ public class ClienteCIT {
         dni = driver.findElement(By.xpath("//*[@id='form:dnicli']"));
         mobile = driver.findElement(By.xpath("//*[@id='form:mobilecli']"));
         address = driver.findElement(By.xpath("//*[@id='form:addresscli']"));
-        location = driver.findElement(By.xpath("//*[@id='form:locationcli']"));
+        //location = driver.findElement(By.xpath("//*[@id='form:locationcli']"));
         
         //intentos sin exito SelectOneMenu
-        //driver.findElement(By.id("form:locationcli_label")).click();
-        //driver.findElement(By.xpath("//div[@id='form:locationcli_label']/ul/li[text()='item value']")).click();
+        driver.findElement(By.id("form:locationcli_label")).click();
+        driver.findElement(By.xpath("//div[@id='form:locationcli_label']/ul/li[text()='item value']")).click();
 
         //send
         code.sendKeys("12");
@@ -70,7 +70,7 @@ public class ClienteCIT {
         dni.sendKeys("75365805");
         mobile.sendKeys("933495871");
         address.sendKeys("Miguel Grau");
-        location.sendKeys("150101");
+        //location.sendKeys("150101");
         
         //Close the browser
         //driver.quit();

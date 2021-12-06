@@ -58,7 +58,7 @@
                 
                 
 <!--                Aqui el selecOneMenu-->
-                <p:selectOneMenu title="Igrese el Ubigeo" id="lug" value="#{ClienteC.cliente.ubigeo.idubi}" style="width:195px" 
+                <p:selectOneMenu title="Igrese el Ubigeo" id="locationcli" value="#{ClienteC.cliente.ubigeo.idubi}" style="width:195px" 
                                  filter="true" filterMatchMode="contains" required="true" requiredMessage="Falta Ubigeo" >
                     <f:selectItem noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}"/>
                     <f:selectItems value="#{UbigeoC.listadoUbigeo}" var="ubigeo"
